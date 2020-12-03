@@ -1,0 +1,12 @@
+.navbar {
+    color: green;
+}
+.content {
+    color: purple;
+}
+a {
+    margin: 10px;
+}
+* {
+    background-color: gainsboro;
+}
