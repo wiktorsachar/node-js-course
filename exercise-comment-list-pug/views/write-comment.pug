@@ -7,6 +7,8 @@ html(lang="en")
     body
         h1 Philosophical Forum
         form(action="/send-post", method="post")
+            h3 Title:
+            input(type="text", name="title")
             h3 Comment:
             input(type="text", name="comment")
             h3 Author:
