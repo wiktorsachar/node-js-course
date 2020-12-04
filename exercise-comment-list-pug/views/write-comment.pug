@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Write Comment
+    body
+        h1 Philosophical Forum
+        form(action="/send-post", method="post")
+            h3 Comment:
+            input(type="text", name="comment")
+            h3 Author:
+            input(type="text", name="author")
+            button(type="submit") Send Comment

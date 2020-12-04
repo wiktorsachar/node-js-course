@@ -1,7 +1,10 @@
 const express = require("express");
-const router = require('./routes/basicRoutes')
+const routerData = require('./routes/basicRoutes')
+const bodyParser = require('body-parser');
 const app = express();
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.set('view engine', 'pug');
 app.set('views', 'views');
-app.use(router)
+app.use(routerData.router)
 app.listen(3000);
