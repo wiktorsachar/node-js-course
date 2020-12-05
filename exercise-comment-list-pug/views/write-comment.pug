@@ -3,14 +3,21 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/core.css")
+        link(rel="stylesheet", href="/css/write-comment.css")
         title Write Comment
     body
-        h1 Philosophical Forum
-        form(action="/send-post", method="post")
-            h3 Title:
-            input(type="text", name="title")
-            h3 Comment:
-            input(type="text", name="comment")
-            h3 Author:
-            input(type="text", name="author")
-            button(type="submit") Send Comment
+        div.top
+                div.hub
+                    span Philo
+                    span Forum
+        div.content
+            h1 Write comment
+            form(action="/send-post", method="post")
+                h3 Title:
+                input(type="text", name="title")
+                h3 Comment:
+                textarea(name="comment", cols="40", rows="8")
+                h3 Author:
+                input(type="text", name="author")
+                button(type="submit") Send Comment
