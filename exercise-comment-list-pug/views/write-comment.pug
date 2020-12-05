@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/css/core.css")
-        title Write Comment
-    body
-        div.top
-                div.hub
-                    span Philo
-                    span Forum
-        div.content
+extends layouts/basic-layout.pug  
+block content
+    div.content
             h1 Write comment
             form(action="/send-post", method="post")
                 h3 Title:
