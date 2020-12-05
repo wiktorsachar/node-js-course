@@ -22,7 +22,8 @@ html(lang="en")
                                 p #{comment.comment}
                                 p.author #{comment.author}, #{comment.time}
                 else
-                    h1 No more comments
+                    h1 No comments
             form(action="/write-comment", method="get")
-                button(type="submit") Write Comment
+                div.button-container
+                    button(type="submit") Write Comment
                 
