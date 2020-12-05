@@ -3,32 +3,25 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/index.css")
         title Philosophical Forum
     body
-        h1 Philosophical Forum
-        div
-            //- div
-            //-     h3 tytuł
-            //-     p treść
-            //-     p autor, data
-            //- div
-            //-     h3 tytuł
-            //-     p treść
-            //-     p autor, data
-            //- div
-            //-     h3 tytuł
-            //-     p treść
-            //-     p autor, data
-        div
-            if comments.length > 0
-                .grid
-                    each comment in comments
-                        div
-                            h3 #{comment.title}
-                            p #{comment.comment}
-                            p #{comment.author}, #{comment.time}
-            else
-                h1 No more comments
-        form(action="/write-comment", method="get")
-            button(type="submit") Write Comment
-            
+        div.top
+            div.hub
+                span Philo
+                span Forum
+        div.content
+            h1 New posts:
+            div
+                if comments.length > 0
+                    .grid
+                        each comment in comments
+                            div.comment
+                                h3 #{comment.title}
+                                p #{comment.comment}
+                                p.author #{comment.author}, #{comment.time}
+                else
+                    h1 No more comments
+            form(action="/write-comment", method="get")
+                button(type="submit") Write Comment
+                
