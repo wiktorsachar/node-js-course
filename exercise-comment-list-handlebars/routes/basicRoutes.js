@@ -5,7 +5,8 @@ router.get("/", (req, res) => {
   res.render("index", { comments });
 });
 router.get("/write-comment", (req, res) => {
-  res.render("write-comment");
+  res.render("write-comment", { comments });
+  console.log(comments);
 });
 router.post("/send-post", (req, res) => {
   const date = new Date();
