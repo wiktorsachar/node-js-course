@@ -1,0 +1,18 @@
+<%- include('includes/main.ejs') %>
+<body>
+    <%- include('includes/top.ejs') %>
+    <div class="content">
+        <h1>Write comment</h1>
+        <form action="/send-post" method="post">
+            <h3>Title:</h3>
+            <input type="text" name="title" />
+            <h3>Comment:</h3>
+            <textarea name="comment" cols="40" rows="8"></textarea>
+            <h3>Author:</h3>
+            <input type="text" name="author" />
+            <div class="button-container">
+                <button type="submit">Send Comment</button>
+            </div>
+        </form>
+    </div>
+</body>
