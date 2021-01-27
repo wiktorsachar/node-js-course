@@ -1,23 +1,16 @@
-const comments = [];
+const Comment = require("../models/comment");
+
 exports.getMainPage = (req, res) => {
-  res.render("index", { comments });
+  res.render("index", { comments: Comment.fetchComments() });
 };
 exports.getWriteCommentPage = (req, res) => {
-  res.render("write-comment", { comments });
+  res.render("write-comment", { comments: Comment.fetchComments() });
   console.log(comments);
 };
 exports.postSendComment = (req, res) => {
-  const date = new Date();
-  const time =
-    date.toLocaleDateString() +
-    " " +
-    date.getHours() +
-    ":" +
-    date.getMinutes() +
-    ":" +
-    date.getSeconds();
   const { title, comment, author } = req.body;
-  comments.push({ title, comment, author, time });
+  const commentTemplate = new Comment({ title, comment, author });
+  commentTemplate.save();
   console.log(title, comment, author);
   res.redirect("/");
 };
