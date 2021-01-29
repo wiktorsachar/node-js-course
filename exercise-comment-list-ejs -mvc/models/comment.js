@@ -1,7 +1,25 @@
 const fs = require("fs");
-
+const path = require("path");
 const getTimeStamp = require("../util/timeStamp");
-// const comments = []; <-- previous version
+
+const commentPath = path.join(
+  path.dirname(require.main.filename),
+  "data",
+  "comments.json"
+);
+
+//-------------------------------------------------- version 1 (works fine)
+
+const loadComments = (callback) => {
+  fs.readFile(commentPath, (err, data) => {
+    if (err) {
+      callback([]);
+    } else {
+      callback(JSON.parse(data));
+    }
+  });
+};
+
 module.exports = class Comment {
   constructor(data) {
     this.title = data.title;
@@ -9,25 +27,41 @@ module.exports = class Comment {
     this.author = data.author;
     this.time = getTimeStamp();
   }
-  save() {
-    //comments.push(this); <-- previous version
-    const comments = this.fetchComments();
-    comments.push(this);
-    fs.writeFile(
-      "../data/comments.json",
-      JSON.stringify(comments),
-      (err, data) => {}
-    );
+  static fetchComments(callback) {
+    loadComments(callback);
   }
-  static fetchComments() {
-    //return comments; <-- previous version
-    try {
-      const comments = fs.readFile("../data/comments.json", (err, data) => {
-        return JSON.parse(data);
+  save() {
+    loadComments((comments) => {
+      comments.push(this);
+      fs.writeFile(commentPath, JSON.stringify(comments), err => {
+        console.log(err)
       });
-      return comments;
-    } catch {
-      return [];
-    }
+    });
   }
 };
+
+//-------------------------------------------------- version 2 (doesn't work)
+
+// module.exports = class Comment {
+//   constructor(data) {
+//     this.title = data.title;
+//     this.comment = data.comment;
+//     this.author = data.author;
+//     this.time = getTimeStamp();
+//   }
+//   static fetchComments(callback) {
+//     fs.readFile(commentPath, (err, data) => {
+//       if (err) {
+//         callback([]);
+//       } else {
+//         callback(JSON.parse(data));
+//       }
+//     });
+//   }
+//   save() {
+//     this.fetchComments((comments) => {
+//       comments.push(this);
+//       fs.writeFile(commentPath, JSON.stringify(comments));
+//     });
+//   }
+// };

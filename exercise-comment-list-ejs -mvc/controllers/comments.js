@@ -1,10 +1,13 @@
 const Comment = require("../models/comment");
 
 exports.getMainPage = (req, res) => {
-  res.render("index", { comments: Comment.fetchComments() });
+ // res.render("index", { comments: Comment.fetchComments() });
+ Comment.fetchComments(comments=> {
+   res.render("index", {comments})
+ })
 };
 exports.getWriteCommentPage = (req, res) => {
-  res.render("write-comment", { comments: Comment.fetchComments() });
+  res.render("write-comment"/*, { comments: Comment.fetchComments() }*/);
   console.log(comments);
 };
 exports.postSendComment = (req, res) => {
