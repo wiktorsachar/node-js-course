@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const getTimeStamp = require("../util/timeStamp");
+const createId = require('../util/createId');
 
 const commentPath = path.join(
   path.dirname(require.main.filename),
@@ -26,6 +27,7 @@ module.exports = class Comment {
     this.comment = data.comment;
     this.author = data.author;
     this.time = getTimeStamp();
+    this.id = createId(data.comment);
   }
   static fetchComments(callback) {
     loadComments(callback);
