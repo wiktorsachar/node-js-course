@@ -1,12 +1,26 @@
+const fixLength = (sentence) => {
+  if (sentence.toString().length === 1) {
+    return "0" + sentence;
+  }
+  return sentence.toString();
+};
+
+const fixDate = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return fixLength(day) + "-" + fixLength(month) + "-" + year;
+};
+
 module.exports = () => {
   const date = new Date();
   return (
-    date.toLocaleDateString() +
+    fixDate(date) +
     " " +
-    date.getHours() +
+    fixLength(date.getHours()) +
     ":" +
-    date.getMinutes() +
+    fixLength(date.getMinutes()) +
     ":" +
-    date.getSeconds()
+    fixLength(date.getSeconds())
   );
 };
