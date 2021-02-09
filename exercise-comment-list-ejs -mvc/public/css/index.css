@@ -9,3 +9,7 @@
 .author {
   font-style: italic;
 }
+a {
+  color: #ff9900;
+  text-decoration: none;
+}

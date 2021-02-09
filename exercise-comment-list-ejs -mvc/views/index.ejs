@@ -6,7 +6,8 @@
     <div>
       <% if (comments.length > 0) { %> <% comments.forEach(e => { %>
       <div class="comment">
-        <h3><%=e.title %></h3>
+        <a href=<%='/comment/' + e.id %>><h3><%=e.title %></h3></a>
+        <!-- <h3><%=e.title %></h3> -->
         <p><%=e.comment %></p>
         <p class="author"><%=e.author + ', ' + e.time %></p>
       </div>
