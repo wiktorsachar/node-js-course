@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>City</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="stylesheet" href="css/index.css" /> -->
+</head>
+<body>
+  <div class="top">
+    <h1>AGREGATOR POGODOWY</h1>
+    <label for="city-select">Wybierz miasto:</label>
+    <% if (weatherData){ %>
+    <select name="cities" id="city-select" onchange="location = this.value;">
+      <option value="">--wybierz miasto--</option>
+      <% weatherData[0].forEach(e => { %>
+      <option value=<%= e.id_stacji %>><%= e.stacja %></option>
+      <%}) %>
+    </select>
+    <% }else{ %>
+    <p>No cities loaded.</p>
+    <% } %>
+  </div>
+  <p id="bottom">
+      <% if (cityData){ %>
+        <div>
+          <% cityData.forEach(e => { %>
+            <h2><%= e.stacja %></h2>
+            <p> Data pomiaru: <%= e.data_pomiaru %></p>
+            <p> Godzina pomiaru: <%= e.godzina_pomiaru %></p>
+            <p> Temperatura: <%= e.temperatura %></p>
+            <p> Prędkość wiatru: <%= e.predkosc_wiatru %></p>
+            <p> Kierunek wiatru: <%= e.kierunek_wiatru %></p>
+            <p> Wilgotność względna: <%= e.wilgotnosc_wzgledna %></p>
+            <p> Suma opadu: <%= e.suma_opadu %></p>
+            <p> Ciśnienie: <%= e.cisnienie %></p>
+          <%}) %>
+          </div>
+        <% }else{ %>
+        <p>No cities loaded.</p>
+        <% } %>
+  </p>
+</body>
